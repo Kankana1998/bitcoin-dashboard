@@ -1,6 +1,67 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --color-primary: #f7931a;
+  --color-crypto-green: #22c55e;
+  --color-crypto-red: #ef4444;
+  --color-background-light: #f8fafc;
+  --color-background-dark: #0f172a;
+  --color-surface-light: rgba(255, 255, 255, 0.7);
+  --color-surface-dark: rgba(30, 41, 59, 0.7);
+  --color-border-light: rgba(226, 232, 240, 0.5);
+  --color-border-dark: rgba(51, 65, 85, 0.5);
+
+  --animate-flash-green: flash-green 1s ease-out;
+  --animate-flash-red: flash-red 1s ease-out;
+
+  @keyframes flash-green {
+    0% {
+      background-color: rgba(34, 197, 94, 0.2);
+    }
+
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  @keyframes flash-red {
+    0% {
+      background-color: rgba(239, 68, 68, 0.2);
+    }
+
+    100% {
+      background-color: transparent;
+    }
+  }
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+
+  .dark body {
+    background-color: var(--color-background-dark);
+    color: #f8fafc;
+  }
+
+  body {
+    background-color: var(--color-background-light);
+    color: #0f172a;
+  }
+}
+
+.glass-panel {
+  @apply backdrop-blur-xl border shadow-lg transition-all duration-300 rounded-2xl;
+}
+
+body .glass-panel {
+  background-color: var(--color-surface-light);
+  border-color: var(--color-border-light);
+}
+
+.dark .glass-panel {
+  background-color: var(--color-surface-dark);
+  border-color: var(--color-border-dark);
 }

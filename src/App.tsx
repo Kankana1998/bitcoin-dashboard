@@ -1,16 +1,24 @@
-import React from 'react';
+import React from "react";
+import { Navbar } from "./components/Navbar";
+import { TradingViewWidget } from "./components/TradingViewWidget";
+import { StatsCard } from "./components/StatsCard";
+import { SparklineChart } from "./components/SparklineChart";
 
 function App() {
   return (
-    <div className="min-h-screen bg-neutral-900 text-white flex items-center justify-center p-4">
-      <div className="bg-neutral-800 rounded-2xl shadow-2xl p-8 max-w-md w-full text-center border border-neutral-700">
-        <h1 className="text-4xl font-bold text-primary mb-4 flex items-center justify-center gap-3">
-          Bitcoin Dashboard
-        </h1>
-        <p className="text-neutral-400">
-          Base Vite + React + Tailwind v4 Setup Complete!
-        </p>
-      </div>
+    <div className="min-h-screen pt-4 pb-8 flex flex-col font-sans">
+      <Navbar />
+      <main className="flex-1">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="col-span-1 md:col-span-2 lg:col-span-3">
+              <TradingViewWidget />
+            </div>
+            <StatsCard />
+            <SparklineChart />
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
